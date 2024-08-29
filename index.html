@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthCare Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="healthcare-container">
+        <div class="header">
+            <!-- Header logo -->
+            <div class="logo">
+                <img src="images/TestLogo.svg" alt="Logo">
+            </div>
+            <!-- List all the items that are in the middle of the header. -->
+            <div class="list-item">
+                <div>
+                    <img src="images/home.svg" alt="home">
+                    <span>Overview</span>
+                </div>
+                <div>
+                    <img src="images/group.svg" alt="group">
+                    <span>Patients</span>
+                </div>
+                <div>
+                    <img src="images/calendar.svg" alt="calendar">
+                    <span>Schedule</span>
+                </div>
+                <div>
+                    <img src="images/chat.svg" alt="chat">
+                    <span>Message</span>
+                </div>
+                <div>
+                    <img src="images/credit_card.svg" alt="credit_card">
+                    <span>Transactions</span>
+                </div>
+            </div>
+            <!-- Doctor profile information. -->
+            <div class="right-section">
+                <div id="doctor-profile">
+                    <img src="images/sw_doctor.png" alt="sw_doctor">
+                    <div>
+                        <p class="doctor-name">Dr. Jose Simmons</p>
+                        <p class="doctor-title">General Practitioner</p>
+                    </div>
+                </div>
+                <div class="vertical_line">
+                </div>
+                <div>
+                    <img src="images/setting.svg" alt="setting" id="setting-logo" height="20px" width="19px">
+                </div>
+                <div>
+                    <img src="images/vertical_dot.svg" alt="vertical_dot" id="vertical_dot-logo">
+                </div>
+            </div>
+        </div>
+
+        <!-- Container for patient details, diagnosis, and lab results. -->
+        <div class="patientDetails-Diagnosis-Profile-labResults">
+            <!-- Wrapper for patient details. -->
+            <div class="patient-details">
+                <div class="patients-heading">
+                    <span>Patients</span>
+                    <img src="images/search.svg" alt="search" width="18px" height="18px">
+                </div>
+                <div class="patients-detail-list">
+                    <!-- All patient details are dynamically created here using JavaScript and the DOM, with data updated via an API -->
+                </div>
+            </div>
+
+            <!-- Container for diagnosis history and giagnostic list. -->
+            <div class="diagnosis">
+                <div class="diagnosis-history">
+                    <h2>Diagnosis History</h2>
+                    <div class="graph-container">
+                        <p>Blood Pressure</p>
+                        <div class="simple-dropdown">
+                            <span class="dropdown-text">Last 6 months</span>
+                            <img src="images/dropdownarray.svg" alt="dropdown-arrow" class="dropdown-arrow">
+                            <div class="dropdown-content">
+                                <a href="#">Last 6 months</a>
+                                <a href="#">Last 3 months</a>
+                                <a href="#">Last month</a>
+                            </div>
+                        </div>
+                        <!-- Graph for blood pressure, updated with data fetched through the API -->
+                        <div class="graph">
+                            <canvas id="bloodPressureChart"></canvas>
+                        </div>
+                        <div class="metrics-container">
+                            <div class="metric-card">
+                                <!-- Here metric-value and metric-status is updated with data fetched through the API. -->
+                                <div class="tric-indicator-title">
+                                    <span class="metric-indicator" style="color: #E66FD2;">&#9679;</span>
+                                    <span class="metric-title">Systolic</span>
+                                </div>
+                                <div class="metric-value"></div>
+                                <div class="metric-status-arrow">
+                                    <img src="images/ArrowUp.svg" alt="ArrowUp">
+                                    <span class="metric-status"></span>
+                                </div>
+                            </div>
+                            <div class="h-line">
+                            </div>
+                            <div class="metric-card">
+                                <div class="tric-indicator-title">
+                                    <span class="metric-indicator" style="color: #8C6FE6;">&#9679;</span>
+                                    <span class="metric-title">Diastolic</span>
+                                </div>
+                                <div class="metric-value"></div>
+                                <div class="metric-status-arrow">
+                                    <img src="images/ArrowDown.svg" alt="ArrowDown">
+                                    <span class="metric-status"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="health-info">
+                        <!-- Here info-card-value and info-card-status is updated with data fetched through the API. -->
+                        <div class="info-card" style="background: #E0F3FA 0% 0% no-repeat padding-box;">
+                            <img src="images/respiratory rate.svg" alt="Respiratory Rate Icon">
+                            <p class="info-card-title">Respiratory Rate</p>
+                            <p class="info-card-value"></p>
+                            <p class="info-card-status"></p>
+                        </div>
+                        <div class="info-card" style="background: #FFE6E9 0% 0% no-repeat padding-box;">
+                            <img src="images/temperature.svg" alt="Temperature Icon">
+                            <p class="info-card-title">Temperature</p>
+                            <p class="info-card-value"></p>
+                            <p class="info-card-status"></p>
+                        </div>
+                        <div class="info-card" style="background: #FFE6F1 0% 0% no-repeat padding-box;">
+                            <img src="images/HeartBPM.svg" alt="Heart Rate Icon">
+                            <p class="info-card-title">Heart Rate</p>
+                            <p class="info-card-value"></p>
+                            <p class="info-card-status" id="info-card-status"></p>
+                            <img src="images/ArrowDown.svg" alt="arrow down" id="info-card-arrowDown">
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Container for Diagnostic List -->
+                <div class="diagnostic-list-container">
+                    <h2>Diagnostic List</h2>
+                    <div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th colspan="3">
+                                        <div class="thead-wrapper">
+                                            Problem/Diagnosis
+                                            <span>Description</span>
+                                            <span>Status</span>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Rows are dynamically created and populated with data fetched from the API -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Container for the profile card and lab results -->
+            <div class="profile-card-lab-result">
+                <!-- Profile information is updated with data fetched through the API. -->
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <img class="profile-img">
+                        <span class="profile-name"></span>
+                    </div>
+                    <div class="profile-info">
+                        <div class="info-item">
+                            <div class="profile-logo">
+                                <img src="images/calendar.svg" alt="Date of Birth" width="50%" height="50%">
+                            </div>
+                            <div class="profile-info-text">
+                                <span class="profile-text">Date Of Birth</span>
+                                <span class="info-text"></span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="profile-logo">
+                                <img src="images/FemaleIcon.svg" alt="FemaleIcon" width="90%" height="90%">
+                            </div>
+                            <div class="profile-info-text">
+                                <span class="profile-text">Gender</span>
+                                <span class="info-text"></span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="profile-logo">
+                                <img src="images/PhoneIcon.svg" alt="phoneIcon" width="90%" height="90%">
+                            </div>
+                            <div class="profile-info-text">
+                                <span class="profile-text">Contact Info.</span>
+                                <span class="info-text"></span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="profile-logo">
+                                <img src="images/PhoneIcon.svg" alt="phoneicon" width="90%" height="90%">
+                            </div>
+                            <div class="profile-info-text">
+                                <span class="profile-text">Emergency Contacts</span>
+                                <span class="info-text"></span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="profile-logo">
+                                <img src="images/InsuranceIcon.svg" alt="insurenceIcon" width="90%" height="90%">
+                            </div>
+                            <div class="profile-info-text">
+                                <span class="profile-text">Insurance Provider</span>
+                                <span class="info-text"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="all-information">
+                        <p>Show All Information</p>
+                    </div>
+                </div>
+                <div class="lab-results">
+                    <span>Lab Results</span>
+                    <div class="results-list">
+                        <!-- All lab result list items are created dynamically and updated with data fetched from the API -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
